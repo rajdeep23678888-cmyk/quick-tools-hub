@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Generator - ToolMaster Pro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:Arial;background:linear-gradient(135deg,#667eea,#764ba2);min-height:100vh;padding:20px;color:white}
+        .c{max-width:500px;margin:0 auto;background:rgba(0,0,0,.4);padding:25px;border-radius:20px;text-align:center}
+        h1{margin-bottom:15px}
+        input{width:100%;padding:15px;border:none;border-radius:10px;margin-bottom:15px;font-size:16px;background:rgba(0,0,0,.5);color:white}
+        button{background:#34c759;color:white;border:none;padding:15px 30px;border-radius:10px;font-size:16px;cursor:pointer;width:100%;margin-bottom:15px}
+        #q{background:white;padding:20px;border-radius:15px;display:inline-block;margin:15px 0}
+        a{color:#ffaa33;text-decoration:none;display:block;margin-bottom:15px}
+    </style>
+</head>
+<body>
+    <div class="c">
+        <h1>📱 QR Code Generator</h1>
+        <a href="index.html">← Back to Home</a>
+        <input id="t" placeholder="Enter text or URL..." value="https://toolmasterpro.com">
+        <button onclick="g()">Generate QR Code</button>
+        <div id="q"></div>
+        <button onclick="d()">Download QR Code</button>
+    </div>
+    <script>
+        let qr=new QRCode(document.getElementById("q"),{width:200,height:200});
+        function g(){qr.makeCode(document.getElementById('t').value)}
+        function d(){let i=document.querySelector('#q img');if(i){let a=document.createElement('a');a.download='qrcode.png';a.href=i.src;a.click()}}
+        g()
+    </script>
+</body>
+</html>
